@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Welcome</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <script type="text/javascript" src="semantic/semantic.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/cooking.js"></script>
+  <script type="text/javascript" src="js/coding.js"></script>
+  <script type="text/javascript" src="js/log.js"></script>
+  <audio loop src="https://drive.google.com/uc?export=view&id=1rHDct212yqBRZBPH38c51wMNWR-ICrOx" id="song"></audio>
+</head>
+
+<body onload="loadMenuAndFooter();pollUpdates();">
+  <div class="ui main text container">
+    <div class="ui stackable grid container">
+      <div class="fourteen wide column">
+        <h1 class="ui header">
+          <img src="element/pfp.jpeg" class="ui circular image">
+          <div class="content">
+            Bingqi Li
+            <a style="margin-left:10px;" data-tooltip="Listening to: 赵雷 - 成都" data-position="right center">
+              <i id="music" onclick="togglePlay();" class="tiny red circular link music icon"></i>
+            </a>
+            <div class="sub header">∠( ᐛ 」∠)_</div>
+          </div>
+        </h1>
+      </div>
+      <div class="two wide column">
+        <!-- THE SECRET BUTTON -->
+        <button class="ui massive animated fade icon button" style="background:transparent"
+          onclick="location.href='us.html'" tabindex="-1">
+          <div class="hidden content">
+            <i class="red heart icon"></i>
+          </div>
+          <div class="visible content"></div>
+        </button>
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+
+    <div class="ui vertical stripe segment">
+      <h2 class="ui block header">Latest posts</h2>
+      <h3 class="ui dividing right aligned header">
+        <a href="cooking.html" style="color:inherit;">
+          from <i class="utensils icon"></i>
+          <span> Cooking</span>
+        </a>
+      </h3>
+      <div class="ui top aligned vertically divided stackable grid container" id="cookingPost">
+        <!-- Cooking post goes in here -->
+      </div>
+
+      <h3 class="ui dividing right aligned header">
+        <a href="coding.html" style="color:inherit;">
+          from <i class="bug icon"></i>
+          <span> Coding</span>
+        </a>
+      </h3>
+      <div class="ui top aligned vertically divided stackable grid container" id="codingBlog">
+        <!-- Coding blogs go in here -->
+      </div>
+
+      <h3 class="ui dividing right aligned header">
+        <a href="cats.html" style="color:inherit;">
+          from <i class="paw icon"></i>
+          <span> Cats</span>
+        </a>
+      </h3>
+      <div class="ui placeholder">
+        <div class="image header">
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <div class="paragraph">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <div class="ui section divider"></div>
+      <div id="logContainer">
+        <!-- Update log goes in here -->
+      </div>
+
+      <h4 class="ui right aligned header" data-tooltip="Last updated: 27/6" data-position="top right">
+        <a href="element/test.jpeg" style="color:inherit;">
+          Covid-19 status: <i class="green thumbs up icon"></i>
+        </a>
+      </h4>
+    </div>
+  </div>
+</body>
+
+<script>
+  var play = false;
+  function pollUpdates() {
+    posts[0].postRow(document.getElementById("cookingPost"), true);
+    blogs[0].postRow(document.getElementById("codingBlog"), true);
+    logs[0].postWrap(document.getElementById("logContainer"), "What's new?");
+  }
+  function togglePlay() {
+    if (play) {
+      song.pause();
+      $('#music').transition("remove looping");
+    } else {
+      song.play();
+      $('#music').transition("set looping")
+        .transition("pulse", "1700ms");
+    }
+    play = !play;
+  }
+</script>
+
+</html>
+B

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Study Room</title>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <script type="text/javascript" src="semantic/semantic.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/coding.js"></script>
+</head>
+
+<body onload="loadMenuAndFooter();setupAndLoad();">
+  <div class="ui vertical segment">
+    <div class="ui text container">
+      <h1 class="ui header">Placeholder</h1>
+      <p>
+        [Placeholder]
+      </p>
+    </div>
+    <div class="ui hidden divider"></div>
+  </div>
+
+  <div class="ui vertical segment">
+    <div class="ui top aligned vertically divided stackable grid container" id="blogContainer">
+      <!-- Coding blogs go in here -->
+    </div>
+    <div class="ui section divider"></div>
+    <div class="ui center aligned stackable grid container">
+      <div class="ui middle aligned one column row">
+        <div class="column" id="navigation">
+          <!-- Navigation -->
+        </div>
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+  </div>
+</body>
+
+<script>
+  function setupAndLoad() {
+    setupRoom(document.getElementById('blogContainer'), document.getElementById('navigation'));
+    loadRoom(1);
+  }
+</script>
+
+</html>

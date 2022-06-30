@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Cat House</title>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <script type="text/javascript" src="semantic/semantic.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body onload="loadMenuAndFooter();">
+  <div class="ui main text container">
+    <div class="ui vertical stripe segment">
+      <div class="ui stackable grid container">
+        <div class="two wide column"></div>
+        <pre onclick="pet();" style="cursor: pointer;">
+               ,-.       _,---._ __  / \
+              /  )    .-'       `./ /   \
+             (  (   ,'            `/    /|
+              \  `-"             \'\   / |
+               `.              ,  \ \ /  |
+                /`.          ,'-`----Y   |
+               (            ;        |   '
+               |  ,-.    ,-'         |  /
+               |  | (   |            | /
+               )  |  \  `.___________|/
+               `--'   `--'
+          </pre>
+        <div class="two wide column"></div>
+        <div>
+          <i class="large icons">
+            <i onclick="volume();" class="circular link volume up icon"></i>
+            <i id="mute" class="corner red dont icon"></i>
+          </i>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  function pet() {
+    if (document.getElementById("mute").style.visibility === "hidden") {
+      var num = Math.floor(Math.random() * 3);
+      var type = ["meow", "rummage", "purr"][Math.floor(Math.random() * 3)];
+      var aud = new Audio("element/" + type + num + ".mp3");
+      aud.play();
+    }
+  }
+  function volume() {
+    var mute = document.getElementById("mute");
+    if (mute.style.visibility === "hidden") {
+      mute.style.visibility = "visible";
+    } else {
+      mute.style.visibility = "hidden";
+    }
+  }
+</script>
+
+</html>

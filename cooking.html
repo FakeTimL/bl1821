@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Dinner Table</title>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <script type="text/javascript" src="semantic/semantic.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/cooking.js"></script>
+</head>
+
+<body onload="loadMenuAndFooter();setupAndLoad();">
+  <div class="ui vertical segment">
+    <div class="ui text container">
+      <h1 class="ui header">What's for dinner today?</h1>
+      <!-- https://drive.google.com/drive/folders/14HvlDMbgY9uk22g3JLU4WieLqHlv0Ju9 -->
+      <p>
+        This page is dedicated to recording what Bingqi cooks for dinner every day (ideally, except when he is lazy).
+        This page is not intended to give any cooking advices since he often cooks random things and improvises (messes
+        up) things a lot, any attempt to recreate dishes posted here are at your own risk and are not guaranteed to
+        taste good.
+      </p>
+    </div>
+    <div class="ui hidden divider"></div>
+  </div>
+
+  <div class="ui vertical segment">
+    <div class="ui top aligned vertically divided stackable grid container" id="postContainer">
+      <!-- Cooking posts go in here -->
+    </div>
+    <div class="ui section divider"></div>
+    <div class="ui center aligned stackable grid container">
+      <div class="ui middle aligned one column row">
+        <div class="column" id="navigation">
+          <!-- Navigation -->
+        </div>
+      </div>
+    </div>
+    <div class="ui hidden divider"></div>
+  </div>
+</body>
+
+<script>
+  function setupAndLoad() {
+    setupTable(document.getElementById('postContainer'), document.getElementById('navigation'));
+    reloadTable();
+  }
+</script>
+
+</html>

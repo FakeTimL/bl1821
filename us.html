@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Love Story</title>
+  <link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="semantic/semantic.min.js"></script>
+  <audio loop src="https://drive.google.com/uc?export=view&id=18ECxQWmG6lSNO4XluAvYJ8xgxhn_azly" id="piece"></audio>
+  <style type="text/css">
+    body {
+      background-color: rgba(255, 213, 213, 0.81);
+    }
+
+    body>.grid {
+      height: 100%;
+    }
+
+    .column {
+      max-width: 520px;
+    }
+  </style>
+</head>
+
+<body onload="loadNext();">
+  <div class="ui stackable middle aligned center aligned grid">
+    <div class="row">
+      <div class="one wide column"></div>
+      <div class="thirteen wide column">
+        <a onclick="flipCard();">
+          <div id="card" class="ui middle aligned huge bordered rounded image">
+            <img src="https://drive.google.com/uc?export=view&id=1ep8UxcMaTe5WdvY6iGiMXTVsePiE9UqT"></img>
+          </div>
+        </a>
+      </div>
+      <div class="two wide column">
+        <i class="huge icons">
+          <i id="music" onclick="togglePlay();" class="red circular link microphone slash icon"></i>
+        </i>
+        <br><br>
+        <i class="huge icons">
+          <i id="heart" onclick="location.href='https://www.instagram.com/stories/highlights/17906935172125297/';"
+            class="red circular link heart icon"></i>
+        </i>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  const cards = [
+    "1yGKqYS45OwTpmY3ATgr80xp_QZfHR2Z_",
+    "1Ij8VleSuBKA4PHT8uu2Ih1Xashp4sTW9",
+    "1D8cXa0DnFYdGcSKAC8Cr_eCoU7gmgKg2",
+    "12qkqjnlB2AqpftWFbZetWp0ddHl-xM2n",
+    "12KYlCgfKct0IqRnT5cTHGtpbVMKhhB1k",
+    "1DFXe0wphsONih8HGb5UAvw_sJF-W2JrC",
+    "1JIVXsCjv2lAaqWBoAyftG5nVdlLR8HBD",
+    "14mY0eRAT2hYQAsNpYuyVL0wbvGN4YFpM",
+    "1yz-dFMWpTbYkhBgwL133kJwNFrmpsrK2",
+    "1yiv63xYO3Ih6PjyOabYnADXekALr9Ch1",
+    "1Cg2mix74e1vOYnn1mktKaUY0XunRT4Ef",
+    "1uG_t4EUjNYiZQHlJ_82vdSNXfi4ouwLP",
+    "1_Aq0nerA1WzbENoxjGtc9jpgh5JNcAsI",
+    "1MPpzh4vQa1Pd1O2-uBX-Tc-qZdBpPdFJ",
+    "1uq7K611abyLf0y4yVVQyh2SjgWSM8kPd",
+    "1Ti24T7AKWtT5G2d4oOaZPFqLN6PojHqZ",
+    "1IK2TUJIVhxWDyTwB6-Dv9WYyrjnmtBmW",
+    "1sBxi3sQ5kw4mWXPepB59wXZiDqDCFRBQ",
+    "1TA1hrHgmearDFs2hEALpQHE053qA_K73",
+    "1xO7WXJ1I2QjsjKF_GyMpGAZVC2JZ0pQO",
+    "1Q0fu6DINDabrSzniJbV-3ItqM_qR1MFW",
+    "1haCwOwNYpZImbEcq6n3OJWea-r3mkmbu",
+    "16IhaVZC7DmkbWlPjpf6cYZ2xxcvseolQ",
+    "1KB9H6visLUqQxSoZ_ATB-cMq9CKSDp2O",
+    "1lQbHfQfvHkeZ6xJ1uodq70wXRyI7NnFY",
+    "1ws6_O1tBdUVWPg-SBXmaZ80wfox23dTD",
+    "1xwMRvffhpxzerssWcANXlHS2deF9I2_k",
+    "1_SoJRlBoMxzq37DBzaKbxTOU8S4Z5K26",
+    "136I8GYADxua1FhVLeyzxm8BL0Mo4dwUY",
+    "1KfyIdJPqXkTslFTq3-pwgCBHA7a3uYw5",
+    "1csBS110R9vmiplfmG-8HsT6YUOCqjXeh",
+    "1eLknEMRlhYBrEUn6JdDOpPqpqcXMFdiP",
+    "1BtFD_hjzrHh0rSJZk19qc199mjszGYfC",
+    "1daOo2JMMtcy9MZo8gpryOSsMzveWjEj-",
+    "1EFD-gmSvnxUhc4Q0DShfNufbVk_pY-cl",
+    "1eff146kJUSDa5YJpZe3uI1yVFz8HrTEW",
+    "13_BYU6ILq6U1xU8DQA1fT68EJYDo50bG",
+    "1F_MrwnZtw4eThRDZLNwLAKRiyBrJD7nt",
+    "1HZaG-6sJv8oh8VPc-TM7jv14dWasJS_G",
+    "1GXqXYAUb-aL-q3fBvnsrZ2vQmR3Vadyk",
+    "1E0XEzJDtc36-nmFCoN7cWJNZTR8uV9jq",
+    "1GlVfvEPB8npICaimgRrYgSgU3FimpcKY",
+    "1pIn_U89EjDaXyHh1ivfNf7MLSP4MQkI9",
+    "1ep8UxcMaTe5WdvY6iGiMXTVsePiE9UqT"
+  ]
+  var play = false;
+  var next;
+  var index = -1;
+  function togglePlay() {
+    if (play) {
+      piece.pause();
+      $('#music').attr("class", "red circular link microphone slash icon")
+        .transition("remove looping")
+        .transition("tada", "800ms");
+      $('#heart').transition("remove looping");
+    } else {
+      piece.play();
+      $('#music').attr("class", "red circular link music icon")
+        .transition("set looping")
+        .transition("pulse", "2000ms")
+      $('#heart').transition("set looping").transition("pulse", "2000ms");
+    }
+    play = !play;
+  }
+  function loadNext() {
+    next = $('<img/>').attr('src', `https://drive.google.com/uc?export=view&id=${cards[(++index) % cards.length]}`)
+  }
+  function flipCard() {
+    $('#card')
+      .transition("horizontal flip", function () { $('#card').html(next); })
+      .transition("horizontal flip", function () { loadNext(); });
+  }
+</script>
+
+</html>
