@@ -126,7 +126,20 @@
       canvaHeight = document.getElementsByClassName("ui inverted vertical footer segment")[0].offsetTop - canvaTop - itemSize;
       canvaWidth = screen.width - canvaLeft - itemSize;
     }
-    if (generateItem()) new Audio("element/frog.mp3").play();
+    let id = generateItem();
+    if (id.startsWith("rose")) {
+      new Audio("element/whoosh.mp3").play();
+      $(`#${id}`).click(function() {
+        $(`#${id}`).transition("pulse", "900ms");
+        new Audio("element/heartbeat.mp3").play();
+      });
+    } else {
+      new Audio("element/frog.mp3").play();
+      $(`#${id}`).click(function() {
+        $(`#${id}`).transition("bounce","600ms");
+        new Audio("element/frog.mp3").play();
+      });
+    }
   }
 </script>
 

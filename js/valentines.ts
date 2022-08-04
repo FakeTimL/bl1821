@@ -1,9 +1,10 @@
 const itemSize = 60;
 const gravity = 0.5, interval = 20;
+var count = 0;
 var startLeft = 0, startTop = 0;
 var canvaLeft = 0, canvaWidth = 0, canvaTop = 0, canvaHeight = 0;
 
-function generateItem(): boolean {
+function generateItem(): String {
   const item = document.createElement("img");
   const random = Math.random();
   var img = '';
@@ -12,17 +13,18 @@ function generateItem(): boolean {
   else img = 'queenie';
   item.setAttribute("src", `element/${img}.png`);
   item.className = "valentines-item";
+  item.id = `${img}_${count++}`;
   document.body.append(item);
-  applyPhysics(item, Math.random()*canvaHeight+canvaTop, Math.random()*canvaWidth+canvaLeft);
-  return random >= 0.8;
+  applyPhysics(item, Math.random() * canvaHeight + canvaTop, Math.random() * canvaWidth + canvaLeft);
+  return item.id;
 }
 
 function applyPhysics(item: HTMLElement, targetTop: number, targetLeft: number): void {
-  const vDist = targetTop - startTop, time = Math.sqrt(2*vDist/gravity);
-  const hSpeed = (targetLeft - startLeft)/time;
+  const vDist = targetTop - startTop, time = Math.sqrt(2 * vDist / gravity);
+  const hSpeed = (targetLeft - startLeft) / time;
   item.style.top = `${startTop}px`;
   item.style.left = `${startLeft}px`;
-  
+
   var t = 0;
   let id = setInterval(() => {
     if (++t >= time) {

@@ -1,5 +1,6 @@
 var itemSize = 60;
 var gravity = 0.5, interval = 20;
+var count = 0;
 var startLeft = 0, startTop = 0;
 var canvaLeft = 0, canvaWidth = 0, canvaTop = 0, canvaHeight = 0;
 function generateItem() {
@@ -14,9 +15,10 @@ function generateItem() {
         img = 'queenie';
     item.setAttribute("src", "element/".concat(img, ".png"));
     item.className = "valentines-item";
+    item.id = "".concat(img, "_").concat(count++);
     document.body.append(item);
     applyPhysics(item, Math.random() * canvaHeight + canvaTop, Math.random() * canvaWidth + canvaLeft);
-    return random >= 0.8;
+    return item.id;
 }
 function applyPhysics(item, targetTop, targetLeft) {
     var vDist = targetTop - startTop, time = Math.sqrt(2 * vDist / gravity);
