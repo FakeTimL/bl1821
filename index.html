@@ -11,6 +11,8 @@
   <script type="text/javascript" src="js/cooking.js"></script>
   <script type="text/javascript" src="js/coding.js"></script>
   <script type="text/javascript" src="js/log.js"></script>
+  <link rel="stylesheet" type="text/css" href="js/valentines.css">
+  <script type="text/javascript" src="js/valentines.js"></script>
   <audio loop src="https://drive.google.com/uc?export=view&id=1rHDct212yqBRZBPH38c51wMNWR-ICrOx" id="song"></audio>
 </head>
 
@@ -19,7 +21,7 @@
     <div class="ui stackable grid container">
       <div class="fourteen wide column">
         <h1 class="ui header">
-          <img src="element/pfp.jpeg" class="ui circular image">
+          <img id="pfp" src="element/pfp.jpeg" class="ui circular image" onclick="togglePfp();">
           <div class="content">
             Bingqi Li
             <a style="margin-left:10px;" data-tooltip="Listening to: 赵雷 - 成都" data-position="right center">
@@ -115,7 +117,17 @@
     }
     play = !play;
   }
+  function togglePfp() {
+    $('#pfp').transition("jiggle");
+    if (startLeft == 0) {
+      startTop = $('#pfp').offset().top;
+      startLeft = $('#pfp').offset().left;
+      canvaTop = startTop;
+      canvaHeight = document.getElementsByClassName("ui inverted vertical footer segment")[0].offsetTop - canvaTop - itemSize;
+      canvaWidth = screen.width - canvaLeft - itemSize;
+    }
+    if (generateItem()) new Audio("element/frog.mp3").play();
+  }
 </script>
 
 </html>
-B
